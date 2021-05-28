@@ -1,0 +1,178 @@
+/*
+   Add additional application styles or override styles provided by the selected theme or widgets.
+   You can include SASS syntax, as this file is built to a css file using a SASS processor.
+
+   Available Variables:
+
+   Variable Name      Description
+   ----------------------------------------------------
+   $resources         References the directory where resources reside (images, etc.), this directory may be different
+                      between the design time and the runtime directory structure.
+
+                      Example: background-image: url(#{$resources}/Uploaded/image.png)
+
+   $font-path        References the relative directory where fonts are stored.
+*/
+
+.OpenPanel {
+	position: fixed;
+	bottom: 0;
+	left: 42%;
+}
+
+.ClosePanel {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+.OpenImage {
+	position: fixed;
+	top: 0;
+	right: 0;
+}
+
+.CloseImage {
+	position: fixed;
+	top: 0;
+	right: 0;
+}
+
+.repeater-cell {
+ color: white;
+ background: rgba(42, 42, 42, 0.5) !important;  
+}
+.labelHeader {
+    font-size: 150%;
+  color: orange;
+}
+.labelWidget {
+    margin-bottom: 20px;
+    display: block;
+    padding: 0px;
+}
+.ControlPanel {
+	position: fixed;
+	right: 0;
+	top: 0;
+	bottom: 87px;
+	width: 300px;
+	overflow: auto;
+	background: rgba(0, 0, 0, 0.5) !important;  
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+	border-top: solid 5px;
+	border-left: solid 5px;
+	border-bottom: solid 5px;
+	border-right: none;
+	border-color: rgba(0, 100, 140, 1) !important;
+	color: white;
+	font-family: Arial;
+	font-size: 16px;
+	display: none;
+	animation-name: stretchLeft;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	transform-origin: 100% 0%; 
+}
+
+@keyframes stretchLeft {
+  0% {
+    transform: scaleX(0.3); }
+  40% {
+    transform: scaleX(1.02); }
+  60% {
+    transform: scaleX(0.98); }
+  80% {
+    transform: scaleX(1.01); }
+  100% {
+    transform: scaleX(0.98); }
+  80% {
+    transform: scaleX(1.01); }
+  100% {
+    transform: scaleX(1); } 
+}
+
+.InfoPanel {
+	position: fixed;
+	right: 0;
+    left: 0;
+	bottom: 0;
+	height: 150px;
+	overflow: auto;
+	background: rgba(42, 42, 42, 0.5) !important;  
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	border-top: solid 5px;
+	border-left: solid 5px;
+	border-right: solid 5px;
+	border-bottom: none;
+    padding-top: 0;
+	border-color: rgba(0, 100, 140, 1) !important;
+	color: white;
+	font-family: Arial;
+	font-size: 16px;
+	display: none;
+	animation-name: stretchUp;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	transform-origin: 0% 100%; 
+}
+.InfoPanelClose {
+	position: fixed;
+	right: 0;
+    left: 0;
+	bottom: 0;
+	height: 150px;
+	overflow: auto;
+	background: rgba(255, 0, 0, 0.5) !important;  
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	border-top: solid 5px;
+	border-left: solid 5px;
+	border-right: solid 5px;
+	border-bottom: none;
+    padding-top: 0;
+	border-color: rgba(0, 100, 140, 1) !important;
+	color: white;
+	font-family: Arial;
+	font-size: 16px;
+	display: none;
+	animation-name: stretchDown;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	transform-origin: 0% 100%; 
+}
+
+@keyframes stretchUp {
+  0% {
+    transform: scaleY(0.3); }
+  40% {
+    transform: scaleY(1.02); }
+  60% {
+    transform: scaleY(0.98); }
+  80% {
+    transform: scaleY(1.01); }
+  100% {
+    transform: scaleY(0.98); }
+  80% {
+    transform: scaleY(1.01); }
+  100% {
+    transform: scaleY(1); } 
+}
+@keyframes stretchDown {
+  100% {
+    transform: scaleY(0.3); }
+  80% {
+    transform: scaleY(1.02); }
+  60% {
+    transform: scaleY(0.98); }
+  20% {
+    transform: scaleY(1.01); }
+  0% {
+    transform: scaleY(0.98); }
+  20% {
+    transform: scaleY(1.01); }
+  0% {
+    transform: scaleY(1); } 
+}

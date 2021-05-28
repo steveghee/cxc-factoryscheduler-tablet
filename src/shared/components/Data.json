@@ -1,0 +1,68 @@
+{
+  "attributes": {
+    "namespace": "app.mdl"
+  },
+  "children": [
+    {
+      "attributes": {
+        "id": "vumark",
+        "isbound": "false",
+        "isdeletable": "false",
+        "name": "ThingMark",
+        "value": ""
+      },
+      "name": "twx-app-param"
+    },
+    {
+      "attributes": {
+        "id": "template",
+        "isbound": "false",
+        "isdeletable": "false",
+        "name": "Thing Template",
+        "value": ""
+      },
+      "name": "twx-app-param"
+    },
+    {
+      "attributes": {
+        "id": "thing",
+        "isbound": "false",
+        "isdeletable": "false",
+        "name": "Thing",
+        "value": ""
+      },
+      "name": "twx-app-param"
+    },
+    {
+      "attributes": {
+        "id": "targetloc",
+        "isbound": "false",
+        "isdeletable": "true",
+        "name": "targetloc",
+        "value": ""
+      },
+      "name": "twx-app-param"
+    },
+    {
+      "attributes": {
+        "id": "taskList",
+        "isbound": "false",
+        "isdeletable": "true",
+        "name": "taskList",
+        "value": ""
+      },
+      "name": "twx-app-param"
+    },
+    {
+      "attributes": {
+        "id": "floorOffset",
+        "isbound": "false",
+        "isdeletable": "true",
+        "name": "floorOffset",
+        "value": "1.362"
+      },
+      "name": "twx-app-param"
+    }
+  ],
+  "name": "twx-app-mdl"
+}

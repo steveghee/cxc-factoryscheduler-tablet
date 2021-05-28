@@ -1,0 +1,1014 @@
+{
+  "attributes": {
+    "twx-widget": "",
+    "widget-id": "view-1",
+    "widget-name": "view-1",
+    "is-widget-container": "true",
+    "viewtype": "ar"
+  },
+  "children": [
+    {
+      "name": "twx-container-content",
+      "children": [
+        {
+          "attributes": {
+            "twx-widget": "",
+            "widget-id": "3DContainer-1",
+            "widget-name": "3D Container",
+            "is-widget-container": "true",
+            "enabletrackingevents": "true"
+          },
+          "name": "twx-dt-view",
+          "children": [
+            {
+              "name": "twx-container-content",
+              "children": [
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "areaTarget-1",
+                    "xml-data": "Uploaded/factoryzone.xml",
+                    "show-representation": "true",
+                    "tracking-indicator": "false",
+                    "target-id": "factoryzone",
+                    "default-guide-text": "Trying to locate factoryzone",
+                    "widget-name": "areaTarget-1",
+                    "trackingacquired-expression": "go()",
+                    "dataset": "Uploaded/factoryzone.dat",
+                    "src": "Uploaded/factoryzone.glb",
+                    "x": "-6.6210",
+                    "y": "0.3000",
+                    "z": "-10.1300",
+                    "rx": "0.00",
+                    "ry": "0.00",
+                    "rz": "0.00"
+                  },
+                  "name": "twx-dt-target-area",
+                  "children": [
+                    {
+                      "attributes": {
+                        "eventbind-id": "eb-1620815119546",
+                        "source-type": "widget",
+                        "source-label": "Area Target",
+                        "source-name": "areaTarget-1",
+                        "source-event": "trackingacquired",
+                        "handler-type": "ui",
+                        "handler-name": "flipflop-1",
+                        "handler-service": "setq",
+                        "handler-path": "app.view[\"Home\"].wdg[\"flipflop-1\"].svc.setq"
+                      },
+                      "name": "twx-eventbind"
+                    }
+                  ]
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "i1",
+                    "widget-name": "i1",
+                    "src": "Uploaded/panelInfo1.png",
+                    "scale": "0.2500",
+                    "x": "4.5110",
+                    "y": "-0.0368",
+                    "z": "2.3584",
+                    "rx": "0.25",
+                    "ry": "0.00",
+                    "rz": "0.00"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "i2",
+                    "widget-name": "i2",
+                    "src": "Uploaded/panelInfo1.png",
+                    "class": "",
+                    "scale": "0.2500",
+                    "x": "-0.8341",
+                    "y": "-0.0720",
+                    "z": "2.3057",
+                    "rx": "1.24",
+                    "ry": "-43.39",
+                    "rz": "-0.85"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "i4",
+                    "widget-name": "i4",
+                    "src": "Uploaded/panelInfo2.png",
+                    "class": "",
+                    "scale": "0.2500",
+                    "x": "-3.9439",
+                    "y": "0.1719",
+                    "z": "3.8251",
+                    "rx": "-177.66",
+                    "ry": "-19.63",
+                    "rz": "179.22"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "i5",
+                    "widget-name": "i5",
+                    "src": "Uploaded/panelInfo3.png",
+                    "scale": "0.2500",
+                    "x": "1.4561",
+                    "y": "-0.2959",
+                    "z": "3.4599",
+                    "rx": "0.79",
+                    "ry": "-79.98",
+                    "rz": "-0.00",
+                    "pivot": "7"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "i3",
+                    "widget-name": "i3",
+                    "src": "Uploaded/panelInfo3.png",
+                    "scale": "0.2500",
+                    "x": "-1.9897",
+                    "y": "-0.4043",
+                    "z": "3.9764",
+                    "rx": "180.00",
+                    "ry": "-21.76",
+                    "rz": "180.00",
+                    "pivot": "7"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "panelshader",
+                    "widget-name": "panelshader",
+                    "text": "<script name=\"panelHilitegl\" type=\"x-shader/x-fragment\">\n precision mediump float;\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n \n uniform sampler2D imgA;\n uniform sampler2D imgB;\n uniform float r;\n uniform float g;\n uniform float b;\n uniform float ff;\n uniform float nf;\n\nvoid main(void) {\n vec4 hlt = vec4(r,g,b,1.);\n vec4 tx1 = texture2D(imgA,texCoord);\n vec4 tx2 = hlt * texture2D(imgB, texCoord);\n\n float dz = length(I);\n float cd = (ff > 0.) ? smoothstep( (ff * 2.), ff, dz) : 1. ;\n float od = smoothstep( (nf / 2.), nf, dz);\n float gz = clamp(cd * od, 0., 1.) ; \n\n if (dotp < 0.) discard; else \n gl_FragColor = gz* mix(tx1,tx2,tx2.a);\n}\n</script>\n<script name=\"panelHilitegl\" type=\"x-shader/x-vertex\">\n attribute vec3 vertexPosition;\n attribute vec2 vertexTexCoord;\n\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n\n uniform mat4 modelViewProjectionMatrix;\n uniform mat4 modelViewMatrix;\n uniform mat4 modelMatrix;\n uniform mat4 normalMatrix;\n void main() {\n vec4 vertexNormal=vec4(0.,0.,1.,0.);\n vec4 vp = vec4(vertexPosition, 1.0);\n gl_Position = modelViewProjectionMatrix * vp;\n texCoord = vertexTexCoord;\n vec3 vv = vec3(modelViewMatrix * vp);\n vec3 N = vec3(normalize(normalMatrix * vertexNormal));\n I = vv.xyz - vec3(0);\n dotp = dot(N,normalize(I));\n }\n </script>\n\n\n\n\n\n<script name=\"panelHilite2gl\" type=\"x-shader/x-fragment\">\n precision mediump float;\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n \n uniform sampler2D texSampler2D;\n uniform sampler2D texSampler2D1;\n uniform float r;\n uniform float g;\n uniform float b;\n uniform float ff;\n uniform float nf;\n\nvoid main(void) {\n vec4 hlt = vec4(r,g,b,1.);\n vec4 tx1 = texture2D(texSampler2D,texCoord);\n vec4 tx2 = hlt * texture2D(texSampler2D1, texCoord);\n\n float dz = length(I);\n float cd = (ff > 0.) ? smoothstep( (ff * 2.), ff, dz) : 1. ;\n float od = smoothstep( (nf / 2.), nf, dz);\n float gz = clamp(cd * od, 0., 1.) ; \n\n if (dotp < 0.) discard; else \n gl_FragColor = mix(tx2,mix(tx1,tx2,tx2.a),gz);\n}\n</script>\n<script name=\"panelHilite2gl\" type=\"x-shader/x-vertex\">\n attribute vec3 vertexPosition;\n attribute vec2 vertexTexCoord;\n\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n\n uniform mat4 modelViewProjectionMatrix;\n uniform mat4 modelViewMatrix;\n uniform mat4 modelMatrix;\n uniform mat4 normalMatrix;\n void main() {\n vec4 vertexNormal=vec4(0.,0.,1.,0.);\n vec4 vp = vec4(vertexPosition, 1.0);\n gl_Position = modelViewProjectionMatrix * vp;\n texCoord = vertexTexCoord;\n vec3 vv = vec3(modelViewMatrix * vp);\n vec3 N = vec3(normalize(normalMatrix * vertexNormal));\n I = vv.xyz - vec3(0);\n dotp = dot(N,normalize(I));\n }\n </script>\n\n\n<script name=\"panelHilite2bgl\" type=\"x-shader/x-fragment\">\n precision mediump float;\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n \n uniform sampler2D texSampler2D;\n uniform sampler2D texSampler2D1;\n uniform float r;\n uniform float g;\n uniform float b;\n uniform float ff;\n uniform float nf;\n\nvoid main(void) {\n vec4 hlt = vec4(r,g,b,1.);\n vec4 tx1 = texture2D(texSampler2D,texCoord);\n vec4 tx2 = texture2D(texSampler2D1, texCoord);\n\n vec4 rx2 = (tx2.r * hlt + vec4(1.)*tx2.b)*tx2.a;\n\n float dz = length(I);\n float cd = (ff > 0.) ? smoothstep( (ff * 2.), ff, dz) : 1. ;\n float od = smoothstep( (nf / 2.), nf, dz);\n float gz = clamp(cd * od, 0., 1.) ; \n\n if (dotp < 0.) tx1 = mix(tx1,vec4(0.,0.,0.,tx1.a),-dotp); //discard; else \n gl_FragColor = mix(rx2,mix(tx1,rx2,rx2.a),gz);\n}\n</script>\n<script name=\"panelHilite2bgl\" type=\"x-shader/x-vertex\">\n attribute vec3 vertexPosition;\n attribute vec2 vertexTexCoord;\n\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n\n uniform mat4 modelViewProjectionMatrix;\n uniform mat4 modelViewMatrix;\n uniform mat4 modelMatrix;\n uniform mat4 normalMatrix;\n void main() {\n vec4 vertexNormal=vec4(0.,0.,1.,0.);\n vec4 vp = vec4(vertexPosition, 1.0);\n gl_Position = modelViewProjectionMatrix * vp;\n texCoord = vertexTexCoord;\n vec3 vv = vec3(modelViewMatrix * vp);\n vec3 N = vec3(normalize(normalMatrix * vertexNormal));\n I = vv.xyz - vec3(0);\n dotp = dot(N,normalize(I));\n }\n </script>\n\n\n\n<script name=\"panelHilite3gl\" type=\"x-shader/x-fragment\">\n precision mediump float;\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n \n uniform sampler2D texSampler2D;\n uniform sampler2D imgB;\n uniform sampler2D imgC;\n uniform float r;\n uniform float g;\n uniform float b;\n uniform float ff;\n uniform float nf;\n\nvoid main(void) {\n vec4 hlt = vec4(r,g,b,1.);\n vec4 tx1 = texture2D(texSampler2D,texCoord);\n vec4 tx2 = hlt * texture2D(imgB, texCoord);\n vec4 tx3 = texture2D(imgC, texCoord);\n\n float dz = length(I);\n float cd = (ff > 0.) ? smoothstep( (ff * 2.), ff, dz) : 1. ;\n float od = smoothstep( (nf / 2.), nf, dz);\n float gz = clamp(cd * od, 0., 1.) ; \n\n if (dotp < 0.) discard; else \n gl_FragColor = mix(tx2,mix(mix(tx1,tx3,tx3.a),tx2,tx2.a),gz);\n}\n</script>\n<script name=\"panelHilite3gl\" type=\"x-shader/x-vertex\">\n attribute vec3 vertexPosition;\n attribute vec2 vertexTexCoord;\n\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n\n uniform mat4 modelViewProjectionMatrix;\n uniform mat4 modelViewMatrix;\n uniform mat4 modelMatrix;\n uniform mat4 normalMatrix;\n void main() {\n vec4 vertexNormal=vec4(0.,0.,1.,0.);\n vec4 vp = vec4(vertexPosition, 1.0);\n gl_Position = modelViewProjectionMatrix * vp;\n texCoord = vertexTexCoord;\n vec3 vv = vec3(modelViewMatrix * vp);\n vec3 N = vec3(normalize(normalMatrix * vertexNormal));\n I = vv.xyz - vec3(0);\n dotp = dot(N,normalize(I));\n }\n </script>\n\n<script name=\"panelTrafficgl\" type=\"x-shader/x-fragment\">\n precision mediump float;\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n \n uniform sampler2D imgA;\n uniform sampler2D imgB;\n uniform float state;\n uniform float ff;\n uniform float nf;\n uniform float tick;\n\nvoid main(void) {\n vec4 tx1 = texture2D(imgA,texCoord);\n vec4 tx2 = texture2D(imgB,texCoord);\n float istate = state==0. ? 1.+floor(mod(tick*10.,3.)) : state;\n vec4 hlt = vec4(istate<=2.?1.:0.,istate>=2.?1.:0.,0.,tx2.a);\n\n vec4 rx2 = istate==1.? tx2.r * hlt : istate==2.?tx2.g*hlt : istate==3.? tx2.b * hlt : vec4(0.);\n\n float dz = length(I);\n float cd = (ff > 0.) ? smoothstep( (ff * 2.), ff, dz) : 1. ;\n float od = smoothstep( (nf / 2.), nf, dz);\n float gz = clamp(cd * od, 0., 1.) ; \n\n if (dotp < 0.) discard; else \n gl_FragColor = mix(rx2,mix(tx1,rx2,rx2.a),gz);\n}\n</script>\n<script name=\"panelTrafficgl\" type=\"x-shader/x-vertex\">\n attribute vec3 vertexPosition;\n attribute vec2 vertexTexCoord;\n\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n\n uniform mat4 modelViewProjectionMatrix;\n uniform mat4 modelViewMatrix;\n uniform mat4 modelMatrix;\n uniform mat4 normalMatrix;\n void main() {\n vec4 vertexNormal=vec4(0.,0.,1.,0.);\n vec4 vp = vec4(vertexPosition, 1.0);\n gl_Position = modelViewProjectionMatrix * vp;\n texCoord = vertexTexCoord;\n vec3 vv = vec3(modelViewMatrix * vp);\n vec3 N = vec3(normalize(normalMatrix * vertexNormal));\n I = vv.xyz - vec3(0);\n dotp = dot(N,normalize(I));\n }\n </script>"
+                  },
+                  "name": "twx-tml-text"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "billboarder",
+                    "widget-name": "billboarder",
+                    "auto": "true",
+                    "affects": "navMarker,i1,i2,i3,i4,i5,i6,i7",
+                    "angle": "20"
+                  },
+                  "name": "twx-billboard",
+                  "children": [
+                    {
+                      "attributes": {
+                        "databind-id": "db-1620814699526",
+                        "source-type": "ui",
+                        "source-label": "Flipflop",
+                        "source-name": "flipflop-1",
+                        "source-item-type": "property",
+                        "source-item-name": "q",
+                        "binding-type": "widget_property",
+                        "from-expression": "app.view['Home'].wdg['flipflop-1']['q']",
+                        "to-property": "auto"
+                      },
+                      "name": "twx-databind"
+                    }
+                  ]
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "navMarker",
+                    "widget-name": "navMarker",
+                    "src": "Uploaded/panelFlag2.png",
+                    "scale": "0.2500",
+                    "x": "1.6489",
+                    "y": "0.0000",
+                    "z": "2.5342",
+                    "rx": "180.00",
+                    "ry": "-88.08",
+                    "rz": "180.00",
+                    "visible": "false",
+                    "pivot": "7"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "traffic1",
+                    "widget-name": "traffic1",
+                    "src": "Uploaded/tl2.png",
+                    "scale": "0.2500",
+                    "x": "-0.1858",
+                    "y": "-0.4268",
+                    "z": "10.2866",
+                    "rx": "180.00",
+                    "ry": "9.30",
+                    "rz": "180.00"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "traffic2",
+                    "widget-name": "traffic2",
+                    "src": "Uploaded/tl2.png",
+                    "scale": "0.2500",
+                    "x": "-1.3087",
+                    "y": "-0.8909",
+                    "z": "9.2177",
+                    "rx": "180.00",
+                    "ry": "31.99",
+                    "rz": "180.00"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "traffic3",
+                    "widget-name": "traffic3",
+                    "src": "Uploaded/tl2.png",
+                    "scale": "0.2500",
+                    "x": "-3.9212",
+                    "y": "-0.1582",
+                    "z": "-4.8926",
+                    "rx": "0.00",
+                    "ry": "-44.29",
+                    "rz": "0.00"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "traffic4",
+                    "widget-name": "traffic4",
+                    "src": "Uploaded/tl2.png",
+                    "scale": "0.2500",
+                    "x": "4.5334",
+                    "y": "-0.8289",
+                    "z": "2.0241",
+                    "rx": "180.00",
+                    "ry": "-38.71",
+                    "rz": "180.00"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "traffic5",
+                    "widget-name": "traffic5",
+                    "src": "Uploaded/tl2.png",
+                    "scale": "0.2500",
+                    "x": "2.0035",
+                    "y": "-0.9631",
+                    "z": "2.9368",
+                    "rx": "180.00",
+                    "ry": "-83.60",
+                    "rz": "-180.00"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "traffic6",
+                    "widget-name": "traffic6",
+                    "src": "Uploaded/tl2.png",
+                    "scale": "0.2500",
+                    "x": "-1.8795",
+                    "y": "-0.9631",
+                    "z": "4.1212",
+                    "rx": "180.00",
+                    "ry": "-33.96",
+                    "rz": "-180.00"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "i6",
+                    "widget-name": "i6",
+                    "src": "Uploaded/panelInfo1.png",
+                    "scale": "0.2500",
+                    "x": "-0.9710",
+                    "y": "-0.1456",
+                    "z": "9.8924",
+                    "rx": "179.02",
+                    "ry": "22.73",
+                    "rz": "179.62"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "i7",
+                    "widget-name": "i7",
+                    "src": "Uploaded/panelInfo1.png",
+                    "scale": "0.2500",
+                    "x": "-2.8851",
+                    "y": "-0.2023",
+                    "z": "7.9096",
+                    "rx": "179.02",
+                    "ry": "22.73",
+                    "rz": "179.62"
+                  },
+                  "name": "twx-dt-image"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "flagShader",
+                    "widget-name": "flagShader",
+                    "text": "<script name=\"panelFlag1bgl\" type=\"x-shader/x-fragment\">\n precision mediump float;\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n \n uniform sampler2D texSampler2D;\n uniform sampler2D texSampler2D1;\n uniform float r;\n uniform float g;\n uniform float b;\n uniform float ff;\n uniform float nf;\n uniform float tick;\n\nvoid main(void) {\n vec4 hlt = vec4(r,g,b,1.);\nconst float PI=3.14159;\n vec2 wave = vec2(texCoord.x,texCoord.y+smoothstep(0.25,1.,texCoord.x)*0.09*sin(mod(texCoord.x*2.*PI+tick,2.*PI)));\n vec4 tx1 = texture2D(texSampler2D,wave);\n vec4 tx2 = texture2D(texSampler2D1, wave);\n\n//vec4 rx1 = (tx1.r * hlt + vec4(1.)*tx1.b)*tx1.a;\nvec4 rx1 = (tx1.r * hlt + vec4(tx1.b,tx1.b,tx1.b,1.))*tx1.a;\nvec4 rx2 = (tx2.r * hlt + vec4(1.)*tx2.b)*tx2.a;\n\n float dz = length(I);\n float cd = (ff > 0.) ? smoothstep( (ff * 2.), ff, dz) : 1. ;\n float od = smoothstep( (nf / 2.), nf, dz);\n float gz = clamp(cd * od, 0., 1.) ; \n\n if (dotp < 0.) discard; else \n gl_FragColor = mix(rx2,mix(rx1,rx2,rx2.a),gz);\n}\n</script>\n<script name=\"panelFlag1bgl\" type=\"x-shader/x-vertex\">\n attribute vec3 vertexPosition;\n attribute vec2 vertexTexCoord;\n\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n\n uniform mat4 modelViewProjectionMatrix;\n uniform mat4 modelViewMatrix;\n uniform mat4 modelMatrix;\n uniform mat4 normalMatrix;\n void main() {\n vec4 vertexNormal=vec4(0.,0.,1.,0.);\n vec4 vp = vec4(vertexPosition, 1.0);\n gl_Position = modelViewProjectionMatrix * vp;\n texCoord = vertexTexCoord;\n vec3 vv = vec3(modelViewMatrix * vp);\n vec3 N = vec3(normalize(normalMatrix * vertexNormal));\n I = vv.xyz - vec3(0);\n dotp = dot(N,normalize(I));\n }\n </script>\n\n<script name=\"panelFlag2bgl\" type=\"x-shader/x-fragment\">\n precision mediump float;\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n \n uniform sampler2D texSampler2D;\n uniform sampler2D texSampler2D1;\n uniform float r;\n uniform float g;\n uniform float b;\n uniform float ff;\n uniform float nf;\n\nvoid main(void) {\n vec4 hlt = vec4(r,g,b,1.);\n vec4 tx1 = texture2D(texSampler2D,texCoord);\n vec4 tx2 = texture2D(texSampler2D1, texCoord);\n\nvec4 rx1 = (tx1.r * hlt + vec4(1.)*tx1.b)*tx1.a;\nvec4 rx2 = (tx2.r * hlt + vec4(1.)*tx2.b)*tx2.a;\n\n float dz = length(I);\n float cd = (ff > 0.) ? smoothstep( (ff * 2.), ff, dz) : 1. ;\n float od = smoothstep( (nf / 2.), nf, dz);\n float gz = clamp(cd * od, 0., 1.) ; \n\n if (dotp < 0.) discard; else \n gl_FragColor = mix(rx2,mix(rx1,rx2,rx2.a),gz);\n}\n</script>\n<script name=\"panelFlag2bgl\" type=\"x-shader/x-vertex\">\n attribute vec3 vertexPosition;\n attribute vec2 vertexTexCoord;\n\n varying vec2 texCoord;\n varying vec3 I;\n varying float dotp;\n\n uniform mat4 modelViewProjectionMatrix;\n uniform mat4 modelViewMatrix;\n uniform mat4 modelMatrix;\n uniform mat4 normalMatrix;\n void main() {\n vec4 vertexNormal=vec4(0.,0.,1.,0.);\n vec4 vp = vec4(vertexPosition, 1.0);\n gl_Position = modelViewProjectionMatrix * vp;\n texCoord = vertexTexCoord;\n vec3 vv = vec3(modelViewMatrix * vp);\n vec3 N = vec3(normalize(normalMatrix * vertexNormal));\n I = vv.xyz - vec3(0);\n dotp = dot(N,normalize(I));\n }\n </script>"
+                  },
+                  "name": "twx-tml-text"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "navigator",
+                    "feet-color": "1,0,1",
+                    "widget-name": "navigator",
+                    "arrived-expression": "arrived()",
+                    "head": "false",
+                    "cutoff": "1",
+                    "auto": "true"
+                  },
+                  "name": "twx-navigator",
+                  "children": [
+                    {
+                      "attributes": {
+                        "databind-id": "db-1620826464279",
+                        "source-type": "data",
+                        "source-name": "targetloc",
+                        "source-item-type": "value",
+                        "source-item-name": "targetloc",
+                        "binding-type": "custom_field",
+                        "from-expression": "app.params['targetloc']",
+                        "to-property": "poidata"
+                      },
+                      "name": "twx-databind"
+                    },
+                    {
+                      "attributes": {
+                        "databind-id": "db-1620831392572",
+                        "source-type": "data",
+                        "source-name": "floorOffset",
+                        "source-item-type": "value",
+                        "source-item-name": "floorOffset",
+                        "binding-type": "custom_field",
+                        "from-expression": "app.params['floorOffset']",
+                        "to-property": "floor"
+                      },
+                      "name": "twx-databind"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "attributes": {
+            "twx-widget": "",
+            "widget-id": "2DOverlay-1",
+            "widget-name": "2D Overlay",
+            "is-widget-container": "true"
+          },
+          "name": "twx-overlay",
+          "children": [
+            {
+              "name": "twx-container-content",
+              "children": [
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "panel-1",
+                    "widget-name": "Top Panel",
+                    "is-widget-container": "true",
+                    "position": "top"
+                  },
+                  "name": "twx-overlay-container",
+                  "children": [
+                    {
+                      "name": "twx-container-content",
+                      "children": [
+                        {
+                          "attributes": {
+                            "twx-widget": "",
+                            "widget-id": "image-1",
+                            "widget-name": "image-1",
+                            "imgsrc": "Uploaded/new-PTC-logo-only.png",
+                            "width": "64px"
+                          },
+                          "name": "twx-image2",
+                          "children": [
+                            {
+                              "attributes": {
+                                "eventbind-id": "eb-1620814682915",
+                                "source-type": "widget",
+                                "source-label": "Image",
+                                "source-name": "image-1",
+                                "source-event": "click",
+                                "handler-type": "ui",
+                                "handler-name": "flipflop-1",
+                                "handler-service": "clkq",
+                                "handler-path": "app.view[\"Home\"].wdg[\"flipflop-1\"].svc.clkq"
+                              },
+                              "name": "twx-eventbind"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "2DOverlayBody-1",
+                    "widget-name": "2D Body",
+                    "is-widget-container": "true"
+                  },
+                  "name": "twx-overlay-body",
+                  "children": [
+                    {
+                      "name": "twx-container-content",
+                      "children": [
+                        {
+                          "attributes": {
+                            "twx-widget": "",
+                            "widget-id": "panel-2",
+                            "widget-name": "Left Panel",
+                            "is-widget-container": "true",
+                            "position": "left"
+                          },
+                          "name": "twx-overlay-container",
+                          "children": [
+                            {
+                              "name": "twx-container-content",
+                              "children": [
+                                {
+                                  "attributes": {
+                                    "twx-widget": "",
+                                    "widget-id": "flipflop-1",
+                                    "widget-name": "flipflop-1",
+                                    "toggle": "true"
+                                  },
+                                  "name": "twx-flipflop"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "attributes": {
+                            "twx-widget": "",
+                            "widget-id": "panel-3",
+                            "widget-name": "Center Panel",
+                            "is-widget-container": "true",
+                            "position": "center"
+                          },
+                          "name": "twx-overlay-container",
+                          "children": [
+                            {
+                              "name": "twx-container-content"
+                            }
+                          ]
+                        },
+                        {
+                          "attributes": {
+                            "twx-widget": "",
+                            "widget-id": "panel-4",
+                            "widget-name": "Right Panel",
+                            "is-widget-container": "true",
+                            "position": "right"
+                          },
+                          "name": "twx-overlay-container",
+                          "children": [
+                            {
+                              "name": "twx-container-content"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "panel-5",
+                    "widget-name": "Bottom Panel",
+                    "is-widget-container": "true",
+                    "position": "bottom"
+                  },
+                  "name": "twx-overlay-container",
+                  "children": [
+                    {
+                      "name": "twx-container-content"
+                    }
+                  ]
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "ControlPanel",
+                    "widget-name": "ControlPanel",
+                    "is-widget-container": "true",
+                    "class": "ControlPanel"
+                  },
+                  "name": "twx-panel",
+                  "children": [
+                    {
+                      "name": "twx-container-content",
+                      "children": [
+                        {
+                          "attributes": {
+                            "twx-widget": "",
+                            "widget-id": "gridLayout-1",
+                            "widget-name": "gridLayout-1",
+                            "is-widget-container": "true"
+                          },
+                          "name": "twx-gridlayout",
+                          "children": [
+                            {
+                              "name": "twx-container-content",
+                              "children": [
+                                {
+                                  "attributes": {
+                                    "twx-widget": "",
+                                    "widget-id": "row-1a",
+                                    "widget-name": "row-1a",
+                                    "is-widget-container": "true"
+                                  },
+                                  "name": "twx-row",
+                                  "children": [
+                                    {
+                                      "name": "twx-container-content",
+                                      "children": [
+                                        {
+                                          "attributes": {
+                                            "twx-widget": "",
+                                            "widget-id": "column-1",
+                                            "widget-name": "column-1",
+                                            "is-widget-container": "true",
+                                            "alignment": "flex-start"
+                                          },
+                                          "name": "twx-col",
+                                          "children": [
+                                            {
+                                              "name": "twx-container-content",
+                                              "children": [
+                                                {
+                                                  "attributes": {
+                                                    "twx-widget": "",
+                                                    "widget-id": "label-1",
+                                                    "state-format-value": "text",
+                                                    "widget-name": "label-1",
+                                                    "text": "Today's Tasks",
+                                                    "class": "simple-label labelHeader"
+                                                  },
+                                                  "name": "twx-label"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "attributes": {
+                                    "twx-widget": "",
+                                    "widget-id": "row-3",
+                                    "widget-name": "row-3",
+                                    "is-widget-container": "true"
+                                  },
+                                  "name": "twx-row",
+                                  "children": [
+                                    {
+                                      "name": "twx-container-content",
+                                      "children": [
+                                        {
+                                          "attributes": {
+                                            "twx-widget": "",
+                                            "widget-id": "column-4",
+                                            "widget-name": "column-4",
+                                            "is-widget-container": "true"
+                                          },
+                                          "name": "twx-col",
+                                          "children": [
+                                            {
+                                              "name": "twx-container-content",
+                                              "children": [
+                                                {
+                                                  "attributes": {
+                                                    "twx-widget": "",
+                                                    "widget-id": "repeater-3",
+                                                    "widget-name": "repeater-3",
+                                                    "itemclick-expression": "navigateUserTo()",
+                                                    "is-widget-repeater": "true",
+                                                    "class": "Repeater"
+                                                  },
+                                                  "name": "twx-repeater",
+                                                  "children": [
+                                                    {
+                                                      "attributes": {
+                                                        "databind-id": "db-1620827241859",
+                                                        "source-type": "data",
+                                                        "source-name": "taskList",
+                                                        "source-item-type": "value",
+                                                        "source-item-name": "taskList",
+                                                        "binding-type": "custom_field",
+                                                        "from-expression": "app.params['taskList']",
+                                                        "to-property": "data"
+                                                      },
+                                                      "name": "twx-databind"
+                                                    },
+                                                    {
+                                                      "attributes": {
+                                                        "eventbind-id": "eb-1620827416207",
+                                                        "source-type": "widget",
+                                                        "source-label": "Repeater",
+                                                        "source-name": "repeater-3",
+                                                        "source-event": "itemclick",
+                                                        "handler-type": "ui",
+                                                        "handler-name": "navigator",
+                                                        "handler-service": "show",
+                                                        "handler-path": "app.view[\"Home\"].wdg[\"navigator\"].svc.show"
+                                                      },
+                                                      "name": "twx-eventbind"
+                                                    },
+                                                    {
+                                                      "name": "twx-repeater-content",
+                                                      "children": [
+                                                        {
+                                                          "attributes": {
+                                                            "twx-widget": "",
+                                                            "widget-id": "gridLayout-4",
+                                                            "widget-name": "gridLayout-4",
+                                                            "is-widget-container": "true"
+                                                          },
+                                                          "name": "twx-gridlayout",
+                                                          "children": [
+                                                            {
+                                                              "name": "twx-container-content",
+                                                              "children": [
+                                                                {
+                                                                  "attributes": {
+                                                                    "twx-widget": "",
+                                                                    "widget-id": "row-4",
+                                                                    "widget-name": "row-4",
+                                                                    "is-widget-container": "true"
+                                                                  },
+                                                                  "name": "twx-row",
+                                                                  "children": [
+                                                                    {
+                                                                      "name": "twx-container-content",
+                                                                      "children": [
+                                                                        {
+                                                                          "attributes": {
+                                                                            "twx-widget": "",
+                                                                            "widget-id": "column-5",
+                                                                            "widget-name": "column-5",
+                                                                            "is-widget-container": "true"
+                                                                          },
+                                                                          "name": "twx-col",
+                                                                          "children": [
+                                                                            {
+                                                                              "name": "twx-container-content",
+                                                                              "children": [
+                                                                                {
+                                                                                  "attributes": {
+                                                                                    "twx-widget": "",
+                                                                                    "widget-id": "label-3",
+                                                                                    "state-format-value": "text",
+                                                                                    "widget-name": "label-3",
+                                                                                    "text": "{{item.title}}"
+                                                                                  },
+                                                                                  "name": "twx-label"
+                                                                                }
+                                                                              ]
+                                                                            }
+                                                                          ]
+                                                                        },
+                                                                        {
+                                                                          "attributes": {
+                                                                            "twx-widget": "",
+                                                                            "widget-id": "column-6",
+                                                                            "widget-name": "column-6",
+                                                                            "is-widget-container": "true"
+                                                                          },
+                                                                          "name": "twx-col",
+                                                                          "children": [
+                                                                            {
+                                                                              "name": "twx-container-content",
+                                                                              "children": [
+                                                                                {
+                                                                                  "attributes": {
+                                                                                    "twx-widget": "",
+                                                                                    "widget-id": "label-4",
+                                                                                    "state-format-value": "text",
+                                                                                    "widget-name": "label-4",
+                                                                                    "text": "{{item.info}}"
+                                                                                  },
+                                                                                  "name": "twx-label"
+                                                                                }
+                                                                              ]
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              ]
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "OpenImage",
+                    "widget-name": "OpenImage",
+                    "click-expression": "ShowHideControlPanel('ControlPanel')",
+                    "class": "OpenImage",
+                    "imgsrc": "Uploaded/OpenImage.png",
+                    "visible": "false"
+                  },
+                  "name": "twx-image2"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "CloseImage",
+                    "widget-name": "CloseImage",
+                    "click-expression": "ShowHideControlPanel('ControlPanel')",
+                    "class": "CloseImage",
+                    "imgsrc": "Uploaded/CloseImage.png",
+                    "visible": "false"
+                  },
+                  "name": "twx-image2"
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "InfoPanel",
+                    "widget-name": "InfoPanel",
+                    "is-widget-container": "true",
+                    "class": "InfoPanel"
+                  },
+                  "name": "twx-panel",
+                  "children": [
+                    {
+                      "name": "twx-container-content",
+                      "children": [
+                        {
+                          "attributes": {
+                            "twx-widget": "",
+                            "widget-id": "gridLayout-2",
+                            "widget-name": "gridLayout-2",
+                            "is-widget-container": "true"
+                          },
+                          "name": "twx-gridlayout",
+                          "children": [
+                            {
+                              "name": "twx-container-content",
+                              "children": [
+                                {
+                                  "attributes": {
+                                    "twx-widget": "",
+                                    "widget-id": "row-1",
+                                    "widget-name": "row-1",
+                                    "is-widget-container": "true"
+                                  },
+                                  "name": "twx-row",
+                                  "children": [
+                                    {
+                                      "name": "twx-container-content",
+                                      "children": [
+                                        {
+                                          "attributes": {
+                                            "twx-widget": "",
+                                            "widget-id": "column-1",
+                                            "widget-name": "column-1",
+                                            "is-widget-container": "true",
+                                            "justification": "center",
+                                            "alignment": "center"
+                                          },
+                                          "name": "twx-col",
+                                          "children": [
+                                            {
+                                              "name": "twx-container-content",
+                                              "children": [
+                                                {
+                                                  "attributes": {
+                                                    "twx-widget": "",
+                                                    "widget-id": "Closer",
+                                                    "image-align": "center",
+                                                    "widget-name": "Closer",
+                                                    "click-expression": "ShowHideControlPanel('InfoPanel')",
+                                                    "imgsrc": "Uploaded/ClosePanel.png",
+                                                    "width": "150px"
+                                                  },
+                                                  "name": "twx-image2"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "attributes": {
+                                    "twx-widget": "",
+                                    "widget-id": "row-7",
+                                    "widget-name": "row-7",
+                                    "is-widget-container": "true"
+                                  },
+                                  "name": "twx-row",
+                                  "children": [
+                                    {
+                                      "name": "twx-container-content",
+                                      "children": [
+                                        {
+                                          "attributes": {
+                                            "twx-widget": "",
+                                            "widget-id": "column-8",
+                                            "widget-name": "column-8",
+                                            "is-widget-container": "true",
+                                            "alignment": "center",
+                                            "fixedcolsize": "100px",
+                                            "wrap": "no-wrap",
+                                            "padding": ""
+                                          },
+                                          "name": "twx-col",
+                                          "children": [
+                                            {
+                                              "name": "twx-container-content",
+                                              "children": [
+                                                {
+                                                  "attributes": {
+                                                    "twx-widget": "",
+                                                    "widget-id": "toggleButton-1",
+                                                    "widget-name": "toggleButton-1",
+                                                    "click-expression": "jump()",
+                                                    "src": "Uploaded/eqi2.png",
+                                                    "srcnotpressed": "Uploaded/eqi2.png",
+                                                    "width": "96px"
+                                                  },
+                                                  "name": "twx-toggle-button"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "attributes": {
+                                            "twx-widget": "",
+                                            "widget-id": "column-9",
+                                            "widget-name": "column-9",
+                                            "is-widget-container": "true",
+                                            "justification": "center",
+                                            "alignment": "flex-start",
+                                            "fixedcolsize": ""
+                                          },
+                                          "name": "twx-col",
+                                          "children": [
+                                            {
+                                              "name": "twx-container-content",
+                                              "children": [
+                                                {
+                                                  "attributes": {
+                                                    "twx-widget": "",
+                                                    "widget-id": "label-2",
+                                                    "state-format-value": "text",
+                                                    "widget-name": "label-2",
+                                                    "text": "Engine Quality Inspection"
+                                                  },
+                                                  "name": "twx-label"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "attributes": {
+                                    "twx-widget": "",
+                                    "widget-id": "row-2",
+                                    "widget-name": "row-2",
+                                    "is-widget-container": "true"
+                                  },
+                                  "name": "twx-row",
+                                  "children": [
+                                    {
+                                      "name": "twx-container-content",
+                                      "children": [
+                                        {
+                                          "attributes": {
+                                            "twx-widget": "",
+                                            "widget-id": "column-2",
+                                            "widget-name": "column-2",
+                                            "is-widget-container": "true",
+                                            "justification": "center",
+                                            "alignment": "center"
+                                          },
+                                          "name": "twx-col",
+                                          "children": [
+                                            {
+                                              "name": "twx-container-content",
+                                              "children": [
+                                                {
+                                                  "attributes": {
+                                                    "twx-widget": "",
+                                                    "widget-id": "label-5",
+                                                    "state-format-value": "text",
+                                                    "widget-name": "label-5",
+                                                    "text": "1  Experience found"
+                                                  },
+                                                  "name": "twx-label"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "attributes": {
+                    "twx-widget": "",
+                    "widget-id": "OpenPanel",
+                    "widget-name": "OpenPanel",
+                    "click-expression": "ShowHideControlPanel('InfoPanel')",
+                    "class": "OpenPanel",
+                    "imgsrc": "Uploaded/OpenPanel.png",
+                    "visible": "false"
+                  },
+                  "name": "twx-image2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "twx-fragment-parameters"
+    },
+    {
+      "name": "twx-view-data"
+    }
+  ],
+  "name": "twx-view"
+}

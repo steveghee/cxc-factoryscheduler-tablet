@@ -1,0 +1,55 @@
+{
+  "name": "cxc-factoryscheduler-tablet",
+  "projectType": "AR",
+  "viewType": "ar",
+  "fileName": "cxc-factoryscheduler-tablet",
+  "thingworxServer": "https://cds-volvo.ptcxc.com",
+  "viewTemplateFileName": "home-ar.json",
+  "state": {
+    "orientation": "landscape"
+  },
+  "targets": {
+    "phone": {
+      "components": [
+        {
+          "name": "Home",
+          "fileName": "Home",
+          "showInMainMenu": true,
+          "viewType": "ar",
+          "title": "Home"
+        }
+      ],
+      "images": []
+    },
+    "shared": {
+      "components": [
+        {
+          "name": "Data",
+          "fileName": "Data"
+        }
+      ],
+      "images": [],
+      "fragments": [],
+      "styles": [
+        {
+          "name": "App",
+          "fileName": "App",
+          "fileExt": "scss"
+        }
+      ]
+    }
+  },
+  "device": {
+    "name": "ipad",
+    "width": "1024",
+    "height": "768"
+  },
+  "mainNavigationMenuStyle": "leftSideMenu",
+  "resourceDirectory": "src/phone/resources",
+  "resourceRuntimeDir": "app/resources",
+  "fontRuntimeDir": "../fonts",
+  "fontDesigntimeDir": "../dist/fonts",
+  "theme": "twx-light",
+  "version": "1.55.1991",
+  "designedForOffline": true
+}

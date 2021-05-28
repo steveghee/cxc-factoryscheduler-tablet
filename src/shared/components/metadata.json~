@@ -1,0 +1,156 @@
+{
+  "requires": [
+    null
+  ],
+  "designedfor": [],
+  "widgetsUsage": [
+    {
+      "timestamp": "2021-05-10T11:30:20.146Z",
+      "action": "SAVE",
+      "usage": {
+        "twx-view": 1,
+        "twx-dt-view": 1,
+        "twx-overlay": 1,
+        "twx-overlay-container": 5,
+        "twx-overlay-body": 1
+      }
+    },
+    {
+      "timestamp": "2021-05-10T11:30:42.413Z",
+      "action": "SAVE",
+      "usage": {
+        "twx-view": 1,
+        "twx-dt-view": 1,
+        "twx-overlay": 1,
+        "twx-overlay-container": 5,
+        "twx-overlay-body": 1
+      }
+    },
+    {
+      "timestamp": "2021-05-10T11:35:43.459Z",
+      "action": "SAVE",
+      "usage": {
+        "twx-view": 1,
+        "twx-dt-view": 1,
+        "twx-overlay": 1,
+        "twx-overlay-container": 5,
+        "twx-overlay-body": 1,
+        "twx-panel": 1,
+        "twx-gridlayout": 1,
+        "twx-row": 4,
+        "twx-col": 7,
+        "twx-image2": 3,
+        "twx-button": 3,
+        "twx-label": 3
+      }
+    },
+    {
+      "timestamp": "2021-05-10T11:36:31.434Z",
+      "action": "SAVE",
+      "usage": {
+        "twx-view": 1,
+        "twx-dt-view": 1,
+        "twx-overlay": 1,
+        "twx-overlay-container": 5,
+        "twx-overlay-body": 1,
+        "twx-panel": 1,
+        "twx-gridlayout": 1,
+        "twx-row": 4,
+        "twx-col": 7,
+        "twx-image2": 3,
+        "twx-button": 3,
+        "twx-label": 3
+      }
+    },
+    {
+      "timestamp": "2021-05-10T11:40:58.328Z",
+      "action": "SAVE",
+      "usage": {
+        "twx-view": 1,
+        "twx-dt-view": 1,
+        "twx-overlay": 1,
+        "twx-overlay-container": 5,
+        "twx-overlay-body": 1,
+        "twx-panel": 1,
+        "twx-gridlayout": 1,
+        "twx-row": 4,
+        "twx-col": 7,
+        "twx-image2": 3,
+        "twx-button": 3,
+        "twx-label": 3
+      }
+    },
+    {
+      "timestamp": "2021-05-10T11:44:29.707Z",
+      "action": "SAVE",
+      "usage": {
+        "twx-view": 1,
+        "twx-dt-view": 1,
+        "twx-overlay": 1,
+        "twx-overlay-container": 5,
+        "twx-overlay-body": 1,
+        "twx-panel": 1,
+        "twx-gridlayout": 1,
+        "twx-row": 4,
+        "twx-col": 7,
+        "twx-image2": 3,
+        "twx-button": 3,
+        "twx-label": 3
+      }
+    },
+    {
+      "timestamp": "2021-05-10T11:45:38.207Z",
+      "action": "SAVE",
+      "usage": {
+        "twx-view": 1,
+        "twx-dt-view": 1,
+        "twx-overlay": 1,
+        "twx-overlay-container": 5,
+        "twx-overlay-body": 1,
+        "twx-panel": 1,
+        "twx-gridlayout": 1,
+        "twx-row": 4,
+        "twx-col": 7,
+        "twx-image2": 3,
+        "twx-button": 3,
+        "twx-label": 3
+      }
+    },
+    {
+      "timestamp": "2021-05-10T11:53:11.014Z",
+      "action": "SAVE",
+      "usage": {
+        "twx-view": 1,
+        "twx-dt-view": 1,
+        "twx-overlay": 1,
+        "twx-overlay-container": 5,
+        "twx-overlay-body": 1,
+        "twx-panel": 1,
+        "twx-gridlayout": 1,
+        "twx-row": 4,
+        "twx-col": 7,
+        "twx-image2": 3,
+        "twx-button": 3,
+        "twx-label": 3
+      }
+    },
+    {
+      "timestamp": "2021-05-10T11:53:38.465Z",
+      "action": "SAVE",
+      "usage": {
+        "twx-view": 1,
+        "twx-dt-view": 1,
+        "twx-overlay": 1,
+        "twx-overlay-container": 5,
+        "twx-overlay-body": 1,
+        "twx-panel": 1,
+        "twx-gridlayout": 1,
+        "twx-row": 4,
+        "twx-col": 7,
+        "twx-image2": 3,
+        "twx-button": 3,
+        "twx-label": 3
+      }
+    }
+  ]
+}
